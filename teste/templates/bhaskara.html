@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto engenharia</title>
+    <title>Bhaskara</title>
     <style>
         body {
             margin: 0;
@@ -42,7 +42,14 @@
             padding: 20px;
             transition: margin-left 0.3s;
         }
-
+        .calculo1 {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s;
+            color: black;
+            display: block;
+            text-decoration:none ;
+        }
 
 
 
@@ -50,16 +57,31 @@
 </head>
 <body>
     <div class="sidebar" id="sidebar">
-        <a href="home.html">Home</a>
+        <a href="/">Home</a>
         <a href="#">Sobre</a>
-        <a href="formulas.html" >Formulas</a>
+        <a href="/formulas">Formulas</a>
         <a href="#">Contato</a>
     </div>
 
     <div class="main-content" id="mainContent">
-        <h1>Bem-vindo ao Site</h1>
-        <p>Esse site foi criado com o intuito de ajudar a realizar alguns dos cauculos que são muito usados na engenharia</p>
+        <h1>Formula de Bhaskara</h1>
     </div>
-
+ <!--
+    o <br> é para quebrar linha, ou seja ele vai quebrar a linha entre os inputs fazendo com que fique
+    um abaixo do outro
+ -->
+    <form class=calculo1 action="/bhaskara" method="post">
+        <label for="a">A:</label>
+        <input type="number" name="a" required>
+        <br><br>
+        <label for="b">B:</label>
+        <input type="number" name="b" required>
+        <br><br>
+        <label for="c">C</label>
+        <input type="number" name="c" required>
+        <p>{{xs}}</p>
+        <button>Calcular</button>
+    </form>
+   
 </body>
 </html>
