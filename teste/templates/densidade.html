@@ -73,13 +73,13 @@
  -->
     <form class=calculo1 action="/calculo_densidade" method="post">
         <label for="massa">Massa (kg):</label>
-        <input type="number" name="massa" required>
+        <input type="number" name="massa" step="any" required>
         <br><br>
         <label for="volume">Volume (m³):</label>
-        <input type="number" name="volume" required>
+        <input type="number" name="volume" step="any" required>
         <br><br>
         <label for="densidade">Densidade (kg/m³)</label>
-        <input type="number" name="densidade" required>
+        <input type="number" name="densidade" step="any" required>
         <p>{{batata}}</p>
         <button>Calcular</button>
     </form>

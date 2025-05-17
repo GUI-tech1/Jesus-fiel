@@ -70,16 +70,16 @@
  
     <form class=calculo1 action="/calculo_dilataçaolinear" method="post">
         <label for="coeficientedilataçaolinear">Coeficiente de Dilatação Linear:</label>
-        <input type="number" name="coeficientedilataçaolinear" required>
+        <input type="number" name="coeficientedilataçaolinear" step="any" required>
         <br><br>
         <label for="vtemperatura">Variação de temperatura (°C):</label>
-        <input type="number" name="vtemperatura" required>
+        <input type="number" name="vtemperatura" step="any" required>
         <br><br>
         <label for="icomprimento">Comprimento inicial (m)</label>
-        <input type="number" name="icomprimento" required>
+        <input type="number" name="icomprimento" step="any" required>
         <br><br>
         <label for="vcomprimento">Variação do comprimento (m)</label>
-        <input type="number" name="vcomprimento" required>
+        <input type="number" name="vcomprimento" step="any" required>
         <p>{{placa}}</p>
         <button>Calcular</button>
     </form>
