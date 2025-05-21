@@ -69,9 +69,8 @@ def calculo_dilataçao():
         return render_template("dilataçaolinear.html", placa="Erro: Preencha os campos corretamente.")
 #bhaskara
 @app.route("/calculo_bhaskara", methods=["POST"])
-#obs: o nome da função tem que ser diferente do nome da rota
-#pq se não o flask não vai saber qual função chamar
-def bhaskara1():
+#obs: importante tomar cuidade para não repitir o nome da função
+def calculo_bhaskara():
     a = float(request.form.get("a"))
     b = float(request.form.get("b"))
     c = float(request.form.get("c"))
@@ -86,8 +85,8 @@ def bhaskara1():
         x2 = (-b - raiz) / (2*a)
         return render_template("bhaskara.html", xs="X1: " + str(x1) + " e X2: " + str(x2))
 #2lei de newton
-@app.route("/2leinewton", methods=["POST"])
-def lei_newton21():
+@app.route("/calculo_2leinewton", methods=["POST"])
+def calculo_leinewton2():
     massa = float(request.form.get("massa"))
     acel = float(request.form.get("acel"))
     forca = float(request.form.get("força"))
