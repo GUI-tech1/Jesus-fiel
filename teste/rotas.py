@@ -68,7 +68,7 @@ def calculo_dilataçao():
     else:
         return render_template("dilataçaolinear.html", placa="Erro: Preencha os campos corretamente.")
 #bhaskara
-@app.route("/bhaskara", methods=["POST"])
+@app.route("/calculo_bhaskara", methods=["POST"])
 #obs: o nome da função tem que ser diferente do nome da rota
 #pq se não o flask não vai saber qual função chamar
 def bhaskara1():
