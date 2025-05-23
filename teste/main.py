@@ -6,5 +6,5 @@ from rotas import *
 #Não sei o pq mas sem esse if o app não funciona direito
 #se botar o app.run(debug=true) pode editar o site com o codigo rodando
 if __name__ == "__main__":
-    app.run(debug=True , port=808)
+    app.run(debug=True)
     

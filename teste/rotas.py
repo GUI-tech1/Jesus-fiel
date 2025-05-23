@@ -1,4 +1,4 @@
-from app import app
+from main import app
 from flask import render_template, request, redirect, url_for
 #quando na rota só tem o "/" é pq é a pagina inicial do site
 #para o render template funcionar, tem que ter o arquivo .html na pasta templates
