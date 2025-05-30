@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulas</title>
+    <title>Área triângulo</title>
     <style>
         body {
             margin: 0;
@@ -36,19 +36,13 @@
             background-color: #575757;
         }
 
+
         .main-content {
             margin-left: 250px;
             padding: 20px;
             transition: margin-left 0.3s;
         }
-        .main-content input {
-            padding: 3px;
-            font-size: 15px;
-            width: 20%;
-            border: 1px solid black;
-            border-radius: 10px;
-        }
-        .formulas {
+        .calculo1 {
             margin-left: 250px;
             padding: 20px;
             transition: margin-left 0.3s;
@@ -56,48 +50,36 @@
             display: block;
             text-decoration:none ;
         }
-        .formulas a {
-            text-decoration:none;
-            margin-right: 13px;
-            margin-bottom:13px ;
-            color: white;
-            display: inline-block;  
-            padding: 8px;
-            font-size: 15px;
-            background-color: #333;
-            border:none;
-            border-radius: 15px;
 
-        }
 
 
     </style>
 </head>
 <body>
-    <!-- dentro do href está a forma como eu indentifiquei a rota no flask EX:
-     <a href="/">Home</a> Esta com um "/" no href pq a rota do python é "/" e eu quero que quando clicar
-     na aba home ele me leve para a rota "/"
-    
-    
-    --> 
     <div class="sidebar" id="sidebar">
         <a href="/">Home</a>
         <a href="#">Sobre</a>
-        <a href="/formulas" >Formulas</a>
+        <a href="/formulas">Formulas</a>
         <a href="#">Contato</a>
     </div>
+
     <div class="main-content" id="mainContent">
-        <h1>FORMULAS</h1>
-        <input type="text" id="search" placeholder="Pesquisar...">
+        <h1>Calcular Área de um triângulo</h1>
     </div>
-    <div class="formulas" id="densidade">
-        <a href="/densidade">Densidade</a>
-        <a href="/dilataçaolinear">Dilatação linear</a>
-        <a href="/bhaskara">Bhaskara</a>
-        <a href="/2leinewton">2° Lei de Newton</a>
-        <a href="/areatriangulo"> Área triângulo </a>
-        
-
-
+ <!--
+    o <br> é para quebrar linha, ou seja ele vai quebrar a linha entre os inputs fazendo com que fique
+    um abaixo do outro
+ -->
+    <form class=calculo1 action="/calculo_areatriangulo" method="post">
+        <label for="base">Base:</label>
+        <input type="number" name="base" step="any" required>
+        <br><br>
+        <label for="altura">Altura:</label>
+        <input type="number" name="altura" step="any" required>
+        <br><br>
+        <p>{{area}}</p>
+        <button>Calcular</button>
+    </form>
+   
 </body>
 </html>

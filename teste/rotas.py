@@ -23,7 +23,9 @@ def bhaskara():
 @app.route("/2leinewton")
 def lei_newton2():
     return render_template("2leinewton.html")
-
+@app.route("/areatriangulo")
+def areatriangulo():
+    return render_template("areatriangulo.html")
 
 
 
@@ -101,3 +103,15 @@ def calculo_leinewton2():
         return render_template("2leinewton.html", maça="Aceleração: " + str(acel1) + "m/s²")
     else:
         return render_template("2leinewton.html", maça="Erro: Preencha os campos corretamente.")
+#Area do triangulo
+@app.route("/calculo_areatriangulo", methods=["POST"])
+def cauculo_areatriangulo():
+    base=float(request.form.get("base"))
+    altura=float(request.form.get("altura"))
+    if base!=0 or altura!=0:
+        area1=(base*altura)/2
+        return render_template("areatriangulo.html", area= "A área do triângulo é:" + str(area1))
+    else:
+        return render_template("areatriangulo.html", area= "Erro: Preencha os campos corretamente.")
+
+
