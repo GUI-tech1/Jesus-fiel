@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto engenharia</title>
+    <title>MRU</title>
     <style>
         body {
             margin: 0;
@@ -42,7 +42,14 @@
             padding: 20px;
             transition: margin-left 0.3s;
         }
-
+        .calculo1 {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s;
+            color: black;
+            display: block;
+            text-decoration:none ;
+        }
 
 
 
@@ -57,9 +64,22 @@
     </div>
 
     <div class="main-content" id="mainContent">
-        <h1>Bem-vindo ao Site</h1>
-        <p>Esse site foi criado com o intuito de ajudar a realizar alguns dos calculos que são muito usados na engenharia</p>
+        <h1>Fórmula do Movimento Retilíneo Uniforme(MRU)</h1>
+        <p>Use 0 para oque deseja calcular</p>
     </div>
-
+ 
+    <form class=calculo1 action="/calculo_mru" method="post">
+        <label for="dpercorrida">Distância percorrida (m):</label>
+        <input type="number" name="dpercorrida" step="any" required>
+        <br><br>
+        <label for="velocidade">Velocidade (m/s):</label>
+        <input type="number" name="velocidade" step="any" required>
+        <br><br>
+        <label for="tempo">Tempo (s):</label>
+        <input type="number" name="tempo" step="any" required>
+        <p>{{mru}}</p>
+        <button>Calcular</button>
+    </form>
+   
 </body>
 </html>
