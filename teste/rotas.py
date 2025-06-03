@@ -5,12 +5,23 @@ from flask import render_template, request, redirect, url_for
 
 
 #paginas
+#abas
 @app.route("/")
 def home():
     return render_template("home.html")
 @app.route("/formulas")
 def formulas():
     return render_template("formulas.html")
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
+@app.route("/mru")
+def mru():
+    return render_template("mru.html")
+#formulas
 @app.route("/densidade")
 def densidade():
     return render_template("densidade.html")
@@ -103,6 +114,25 @@ def calculo_leinewton2():
         return render_template("2leinewton.html", maça="Aceleração: " + str(acel1) + "m/s²")
     else:
         return render_template("2leinewton.html", maça="Erro: Preencha os campos corretamente.")
+<<<<<<< HEAD
+#MRU
+@app.route("/calculo_mru", methods=["POST"])
+def calculo_mru():
+    dpercorrida= float(request.form.get("dpercorrida"))
+    tempo= float(request.form.get("tempo"))
+    velocidade= float(request.form.get("velocidade"))
+    if dpercorrida==0 and tempo!=0 and velocidade!=0:
+        pfinal1 = velocidade * tempo
+        return render_template("mru.html", mru="Distância percorrida: " + str(pfinal1) + "m")
+    elif tempo==0 and dpercorrida!=0 and velocidade!=0:
+        tempo1 = dpercorrida / velocidade
+        return render_template("mru.html", mru="Tempo: " + str(tempo1) + "s")
+    elif velocidade==0 and dpercorrida!=0 and tempo!=0:
+        velocidade1 = dpercorrida / tempo
+        return render_template("mru.html", mru="Velocidade: " + str(velocidade1) + "m/s")
+    else:
+        return render_template("mru.html", mru="Erro: Preencha os campos corretamente.")
+=======
 #Area do triangulo
 @app.route("/calculo_areatriangulo", methods=["POST"])
 def cauculo_areatriangulo():
@@ -115,3 +145,4 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", area= "Erro: Preencha os campos corretamente.")
 
 
+>>>>>>> d8698fa75662ccca53f5c66393e408c617f7e323
