@@ -114,7 +114,6 @@ def calculo_leinewton2():
         return render_template("2leinewton.html", maça="Aceleração: " + str(acel1) + "m/s²")
     else:
         return render_template("2leinewton.html", maça="Erro: Preencha os campos corretamente.")
-<<<<<<< HEAD
 #MRU
 @app.route("/calculo_mru", methods=["POST"])
 def calculo_mru():
@@ -132,7 +131,6 @@ def calculo_mru():
         return render_template("mru.html", mru="Velocidade: " + str(velocidade1) + "m/s")
     else:
         return render_template("mru.html", mru="Erro: Preencha os campos corretamente.")
-=======
 #Area do triangulo
 @app.route("/calculo_areatriangulo", methods=["POST"])
 def cauculo_areatriangulo():
@@ -145,4 +143,3 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", area= "Erro: Preencha os campos corretamente.")
 
 
->>>>>>> d8698fa75662ccca53f5c66393e408c617f7e323
