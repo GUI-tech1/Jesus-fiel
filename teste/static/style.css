@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+.calculo1 {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+    color: black;
+    display: block;
+    text-decoration:none ;
+}
+#search {
+    padding: 3px;
+    font-size: 15px;
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.formulas {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+    color: black;
+    display: block;
+    text-decoration:none ;
+}
+.formulas a {
+    text-decoration:none;
+    margin-right: 13px;
+    margin-bottom:13px ;
+    color: white;
+    display: inline-block;  
+    padding: 8px;
+    font-size: 15px;
+    background-color: #333;
+    border:none;
+    border-radius: 15px;
+}
+
