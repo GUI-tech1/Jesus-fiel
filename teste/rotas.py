@@ -20,6 +20,7 @@ def contato():
     return render_template("contato.html")
 
 
+
 #formulas
 @app.route("/velocidademedia")
 def velocidademedia():
@@ -27,9 +28,9 @@ def velocidademedia():
 @app.route("/densidade")
 def densidade():
     return render_template("densidade.html")
-@app.route("/dilataçaolinear")
-def dilatacao_linear():
-    return render_template("dilataçaolinear.html")
+@app.route("/dilataçaotermica")
+def dilatacao_termica():
+    return render_template("dilataçaotermica.html")
 @app.route("/bhaskara")
 def bhaskara():
     return render_template("bhaskara.html")
@@ -47,6 +48,16 @@ def areatriangulo():
 
 
 #cauculos
+#velocidade media
+@app.route("/calculo_velocidademedia", methods=["POST"])
+def calculo_velocidademedia():
+    distancia = float(request.form.get("distancia"))
+    tempo = float(request.form.get("tempo"))
+    if distancia != 0 and tempo != 0:
+        velocidade_media = distancia / tempo
+        return render_template("velocidademedia.html", vmedia="Velocidade média: " + str(velocidade_media) + " m/s")
+    else:
+        return render_template("velocidademedia.html", vmedia="Erro: Preencha os campos corretamente.")
 #Calcular a densidade 
 @app.route("/calculo_densidade", methods=["POST"])
 def calculo_densidade():
@@ -64,27 +75,27 @@ def calculo_densidade():
         return render_template("densidade.html", vdensidade="Volume: " + str(volume1)+"m³")
     else:
         return render_template("densidade.html", vdensidade="Erro: Preencha os campos corretamente.")
-#dilatação linear
-@app.route("/calculo_dilataçaolinear", methods=["POST"])
+#dilatação Termica
+@app.route("/calculo_dilataçaotermica", methods=["POST"])
 def calculo_dilataçao():
     icomprimento=float(request.form.get("icomprimento"))
     vtemperatura=float(request.form.get("vtemperatura"))
-    coeficientedilataçaolinear=float(request.form.get("coeficientedilataçaolinear"))
+    coeficientedilataçaotermica=float(request.form.get("coeficientedilataçaotermica"))
     vcomprimento=float(request.form.get("vcomprimento"))
-    if vcomprimento==0 and icomprimento!=0 and coeficientedilataçaolinear!=0 and vtemperatura!=0:
-        vcomprimento1 = icomprimento * coeficientedilataçaolinear * vtemperatura
-        return render_template("dilataçaolinear.html", dlinear="Comprimento: " + str(vcomprimento1)+"m")
-    elif icomprimento==0 and vcomprimento!=0 and coeficientedilataçaolinear!=0 and vtemperatura!=0:
-        icomprimento1 = vcomprimento / (coeficientedilataçaolinear * vtemperatura)
-        return render_template("dilataçaolinear.html", dlinear="Comprimento inicial: " + str(icomprimento1)+"m")
-    elif coeficientedilataçaolinear==0 and icomprimento!=0 and vcomprimento!=0 and vtemperatura!=0:
-        coeficientedilataçaolinear1 = vcomprimento / (icomprimento * vtemperatura)
-        return render_template("dilataçaolinear.html", dlinear="Coeficiente de dilatação linear: " + str(coeficientedilataçaolinear1))
-    elif vtemperatura==0 and icomprimento!=0 and coeficientedilataçaolinear!=0 and vcomprimento!=0:
-        vtemperatura1 = vcomprimento / (icomprimento * coeficientedilataçaolinear)
-        return render_template("dilataçaolinear.html", dlinear="Variação de temperatura: " + str(vtemperatura1))
+    if vcomprimento==0 and icomprimento!=0 and coeficientedilataçaotermica!=0 and vtemperatura!=0:
+        vcomprimento1 = icomprimento * coeficientedilataçaotermica * vtemperatura
+        return render_template("dilataçaotermica.html", dtermica="Comprimento: " + str(vcomprimento1)+"m")
+    elif icomprimento==0 and vcomprimento!=0 and coeficientedilataçaotermica!=0 and vtemperatura!=0:
+        icomprimento1 = vcomprimento / (coeficientedilataçaotermica * vtemperatura)
+        return render_template("dilataçaotermica.html", dtermica="Comprimento inicial: " + str(icomprimento1)+"m")
+    elif coeficientedilataçaotermica==0 and icomprimento!=0 and vcomprimento!=0 and vtemperatura!=0:
+        coeficientedilataçaotermica1 = vcomprimento / (icomprimento * vtemperatura)
+        return render_template("dilataçaotermica.html", dtermica="Coeficiente de dilatação termica: " + str(coeficientedilataçaotermica1))
+    elif vtemperatura==0 and icomprimento!=0 and coeficientedilataçaotermica!=0 and vcomprimento!=0:
+        vtemperatura1 = vcomprimento / (icomprimento * coeficientedilataçaotermica)
+        return render_template("dilataçaotermica.html", dtermica="Variação de temperatura: " + str(vtemperatura1))
     else:
-        return render_template("dilataçaolinear.html", dlinear="Erro: Preencha os campos corretamente.")
+        return render_template("dilataçaotermica.html", dtermica="Erro: Preencha os campos corretamente.")
 #bhaskara
 @app.route("/calculo_bhaskara", methods=["POST"])
 #obs: importante tomar cuidade para não repitir o nome da função
@@ -146,14 +157,6 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", areaT= "A área do triângulo é:" + str(area1))
     else:
         return render_template("areatriangulo.html", areaT= "Erro: Preencha os campos corretamente.")
-@app.route("/calculo_velocidademedia", methods=["POST"])
-def calculo_velocidademedia():
-    distancia = float(request.form.get("distancia"))
-    tempo = float(request.form.get("tempo"))
-    if distancia != 0 and tempo != 0:
-        velocidade_media = distancia / tempo
-        return render_template("velocidademedia.html", vmedia="Velocidade média: " + str(velocidade_media) + " m/s")
-    else:
-        return render_template("velocidademedia.html", vmedia="Erro: Preencha os campos corretamente.")
+
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilatação linear</title>
+    <title>Dilatação térmica</title>
     <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
 </head>
 <body>
@@ -15,13 +15,15 @@
     </div>
 
     <div class="main-content" id="mainContent">
-        <h1>Fórmula da dilatação linear</h1>
+        <h1>Fórmula da dilatação térmica</h1>
         <p>Use 0 para oque deseja calcular</p>
+        <p>Lembre de sempre usar o coeficiente de dilatação correto para o tipo de dilatação que deseja calcular</p>
+        <p>Nos locais de comprimento pode ser colocado comprimento(m) ,área(m²) ou volume(m³), dependendo do tipo de dilatação (o resultado estara escrito "comprimento" mas a medida é a que foi adcionada nos campos)</p>
     </div>
  
-    <form class=calculo1 action="/calculo_dilataçaolinear" method="post">
-        <label for="coeficientedilataçaolinear">Coeficiente de Dilatação Linear:</label>
-        <input type="number" name="coeficientedilataçaolinear" step="any" required>
+    <form class=calculo1 action="/calculo_dilataçaotermica" method="post">
+        <label for="coeficientedilataçaotermica">Coeficiente de Dilatação termica:</label>
+        <input type="number" name="coeficientedilataçaotermica" step="any" required>
         <br><br>
         <label for="vtemperatura">Variação de temperatura (°C):</label>
         <input type="number" name="vtemperatura" step="any" required>
@@ -31,7 +33,7 @@
         <br><br>
         <label for="vcomprimento">Variação do comprimento (m)</label>
         <input type="number" name="vcomprimento" step="any" required>
-        <p>{{dlinear}}</p>
+        <p>{{dtermica}}</p>
         <button>Calcular</button>
     </form>
    
