@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocidade média</title>
+    <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="/">Home</a>
+        <a href="#">Sobre</a>
+        <a href="/formulas">Formulas</a>
+        <a href="#">Contato</a>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <h1>Calcular Velocidade média</h1>
+    </div>
+ <!--
+    o <br> é para quebrar linha, ou seja ele vai quebrar a linha entre os inputs fazendo com que fique
+    um abaixo do outro
+ -->
+    <form class=calculo1 action="/calculo_velocidademedia" method="post">
+        <label for="distancia">Distância (m):</label>
+        <input type="number" name="distancia" step="any" required>
+        <br><br>
+        <label for="tempo">Tempo (s):</label>
+        <input type="number" name="tempo" step="any" required>
+        <br><br>
+        <p>{{vmedia}}</p>
+        <button>Calcular</button>
+    </form>
+   
+</body>
+</html>

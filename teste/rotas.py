@@ -18,10 +18,12 @@ def sobre():
 @app.route("/contato")
 def contato():
     return render_template("contato.html")
-@app.route("/mru")
-def mru():
-    return render_template("mru.html")
+
+
 #formulas
+@app.route("/velocidademedia")
+def velocidademedia():
+    return render_template("velocidademedia.html")
 @app.route("/densidade")
 def densidade():
     return render_template("densidade.html")
@@ -34,6 +36,9 @@ def bhaskara():
 @app.route("/2leinewton")
 def lei_newton2():
     return render_template("2leinewton.html")
+@app.route("/mru")
+def mru():
+    return render_template("mru.html")
 @app.route("/areatriangulo")
 def areatriangulo():
     return render_template("areatriangulo.html")
@@ -141,5 +146,14 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", areaT= "A área do triângulo é:" + str(area1))
     else:
         return render_template("areatriangulo.html", areaT= "Erro: Preencha os campos corretamente.")
+@app.route("/calculo_velocidademedia", methods=["POST"])
+def calculo_velocidademedia():
+    distancia = float(request.form.get("distancia"))
+    tempo = float(request.form.get("tempo"))
+    if distancia != 0 and tempo != 0:
+        velocidade_media = distancia / tempo
+        return render_template("velocidademedia.html", vmedia="Velocidade média: " + str(velocidade_media) + " m/s")
+    else:
+        return render_template("velocidademedia.html", vmedia="Erro: Preencha os campos corretamente.")
 
 
