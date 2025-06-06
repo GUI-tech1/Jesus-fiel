@@ -159,4 +159,3 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", areaT= "Erro: Preencha os campos corretamente.")
 
 
-

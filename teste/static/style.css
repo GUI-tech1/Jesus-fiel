@@ -28,8 +28,6 @@ body {
 .sidebar a:hover {
     background-color: #575757;
 }
-
-
 .main-content {
     margin-left: 250px;
     padding: 20px;
@@ -69,5 +67,14 @@ body {
     background-color: #333;
     border:none;
     border-radius: 15px;
+}
+.contato  {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+.contato a {
+    color: black;
+    font-size:25px;
 }
 
