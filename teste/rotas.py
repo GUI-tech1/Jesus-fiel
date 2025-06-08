@@ -1,5 +1,6 @@
 from main import app
 from flask import render_template, request, redirect, url_for
+from decimal import Decimal
 #quando na rota só tem o "/" é pq é a pagina inicial do site
 #para o render template funcionar, tem que ter o arquivo .html na pasta templates
 
@@ -51,58 +52,66 @@ def areatriangulo():
 #velocidade media
 @app.route("/calculo_velocidademedia", methods=["POST"])
 def calculo_velocidademedia():
-    distancia = float(request.form.get("distancia"))
-    tempo = float(request.form.get("tempo"))
+    distancia = Decimal(request.form.get("distancia"))
+    tempo = Decimal(request.form.get("tempo"))
     if distancia != 0 and tempo != 0:
-        velocidade_media = distancia / tempo
-        return render_template("velocidademedia.html", vmedia="Velocidade média: " + str(velocidade_media) + " m/s")
+        velocidademedia = distancia / tempo
+        velocidademedia_f = format(velocidademedia, 'f')
+        return render_template("velocidademedia.html", vmedia="Velocidade média: " + str(velocidademedia_f) + " m/s")
     else:
         return render_template("velocidademedia.html", vmedia="Erro: Preencha os campos corretamente.")
 #Calcular a densidade 
 @app.route("/calculo_densidade", methods=["POST"])
 def calculo_densidade():
-    massa=float(request.form.get("massa"))
-    volume=float(request.form.get("volume"))
-    densidade=float(request.form.get("densidade"))
+    massa=Decimal(request.form.get("massa"))
+    volume=Decimal(request.form.get("volume"))
+    densidade=Decimal(request.form.get("densidade"))
     if densidade==0 and volume!=0 and massa!=0:
         densidade1 = massa / volume
-        return render_template("densidade.html", vdensidade="Densidade: " + str(densidade1)+"(Kg/m³)")
+        densidade1_f = format(densidade1, 'f')
+        return render_template("densidade.html", vdensidade="Densidade: " + str(densidade1_f)+"( Kg/m³)")
     elif massa==0 and volume!=0 and densidade!=0:
         massa1 = densidade * volume
-        return render_template("densidade.html", vdensidade="Massa: " + str(massa1)+"kg")
+        massa1_f = format(massa1, 'f')
+        return render_template("densidade.html", vdensidade="Massa: " + str(massa1_f)+" kg")
     elif volume==0 and massa!=0 and densidade!=0:
         volume1 = massa / densidade
-        return render_template("densidade.html", vdensidade="Volume: " + str(volume1)+"m³")
+        volume1_f = format(volume1, 'f')
+        return render_template("densidade.html", vdensidade="Volume: " + str(volume1_f)+" m³")
     else:
         return render_template("densidade.html", vdensidade="Erro: Preencha os campos corretamente.")
 #dilatação Termica
 @app.route("/calculo_dilataçaotermica", methods=["POST"])
 def calculo_dilataçao():
-    icomprimento=float(request.form.get("icomprimento"))
-    vtemperatura=float(request.form.get("vtemperatura"))
-    coeficientedilataçaotermica=float(request.form.get("coeficientedilataçaotermica"))
-    vcomprimento=float(request.form.get("vcomprimento"))
+    icomprimento=Decimal(request.form.get("icomprimento"))
+    vtemperatura=Decimal(request.form.get("vtemperatura"))
+    coeficientedilataçaotermica=Decimal(request.form.get("coeficientedilataçaotermica"))
+    vcomprimento=Decimal(request.form.get("vcomprimento"))
     if vcomprimento==0 and icomprimento!=0 and coeficientedilataçaotermica!=0 and vtemperatura!=0:
         vcomprimento1 = icomprimento * coeficientedilataçaotermica * vtemperatura
-        return render_template("dilataçaotermica.html", dtermica="Comprimento: " + str(vcomprimento1)+"m")
+        vcomprimento1_f = format(vcomprimento1, 'f')
+        return render_template("dilataçaotermica.html", dtermica="Comprimento: " + str(vcomprimento1_f)+" m")
     elif icomprimento==0 and vcomprimento!=0 and coeficientedilataçaotermica!=0 and vtemperatura!=0:
         icomprimento1 = vcomprimento / (coeficientedilataçaotermica * vtemperatura)
-        return render_template("dilataçaotermica.html", dtermica="Comprimento inicial: " + str(icomprimento1)+"m")
+        icomprimento1_f = format(icomprimento1, 'f')
+        return render_template("dilataçaotermica.html", dtermica="Comprimento inicial: " + str(icomprimento1_f)+" m")
     elif coeficientedilataçaotermica==0 and icomprimento!=0 and vcomprimento!=0 and vtemperatura!=0:
         coeficientedilataçaotermica1 = vcomprimento / (icomprimento * vtemperatura)
-        return render_template("dilataçaotermica.html", dtermica="Coeficiente de dilatação termica: " + str(coeficientedilataçaotermica1))
+        coeficientedilataçaotermica1_f = format(coeficientedilataçaotermica1, 'f')
+        return render_template("dilataçaotermica.html", dtermica="Coeficiente de dilatação termica: " + str(coeficientedilataçaotermica1_f) )
     elif vtemperatura==0 and icomprimento!=0 and coeficientedilataçaotermica!=0 and vcomprimento!=0:
         vtemperatura1 = vcomprimento / (icomprimento * coeficientedilataçaotermica)
-        return render_template("dilataçaotermica.html", dtermica="Variação de temperatura: " + str(vtemperatura1))
+        vtemperatura1_f = format(vtemperatura1, 'f')
+        return render_template("dilataçaotermica.html", dtermica="Variação de temperatura: " + str(vtemperatura1_f) + " °C")
     else:
         return render_template("dilataçaotermica.html", dtermica="Erro: Preencha os campos corretamente.")
 #bhaskara
 @app.route("/calculo_bhaskara", methods=["POST"])
 #obs: importante tomar cuidade para não repitir o nome da função
 def calculo_bhaskara():
-    a = float(request.form.get("a"))
-    b = float(request.form.get("b"))
-    c = float(request.form.get("c"))
+    a = Decimal(request.form.get("a"))
+    b = Decimal(request.form.get("b"))
+    c = Decimal(request.form.get("c"))
     delta = (b**2) - (4*a*c)
     raiz = delta**(1/2)
     if a==0:
@@ -116,9 +125,9 @@ def calculo_bhaskara():
 #2lei de newton
 @app.route("/calculo_2leinewton", methods=["POST"])
 def calculo_leinewton2():
-    massa = float(request.form.get("massa"))
-    acel = float(request.form.get("acel"))
-    forca = float(request.form.get("força"))
+    massa = Decimal(request.form.get("massa"))
+    acel = Decimal(request.form.get("acel"))
+    forca = Decimal(request.form.get("força"))
     if forca==0 and massa!=0 and acel!=0:
         forca1 = massa * acel
         return render_template("2leinewton.html", newton2="Força: " + str(forca1) + "N")
@@ -133,9 +142,9 @@ def calculo_leinewton2():
 #MRU
 @app.route("/calculo_mru", methods=["POST"])
 def calculo_mru():
-    dpercorrida= float(request.form.get("dpercorrida"))
-    tempo= float(request.form.get("tempo"))
-    velocidade= float(request.form.get("velocidade"))
+    dpercorrida= Decimal(request.form.get("dpercorrida"))
+    tempo= Decimal(request.form.get("tempo"))
+    velocidade= Decimal(request.form.get("velocidade"))
     if dpercorrida==0 and tempo!=0 and velocidade!=0:
         pfinal1 = velocidade * tempo
         return render_template("mru.html", mru="Distância percorrida: " + str(pfinal1) + "m")
@@ -150,8 +159,8 @@ def calculo_mru():
 #Area do triangulo
 @app.route("/calculo_areatriangulo", methods=["POST"])
 def cauculo_areatriangulo():
-    base=float(request.form.get("base"))
-    altura=float(request.form.get("altura"))
+    base=Decimal(request.form.get("base"))
+    altura=Decimal(request.form.get("altura"))
     if base!=0 and altura!=0:
         area1=(base*altura)/2
         return render_template("areatriangulo.html", areaT= "A área do triângulo é:" + str(area1))
