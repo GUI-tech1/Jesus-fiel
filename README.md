@@ -9,3 +9,5 @@ vcomprimento1_f = format(vcomprimento1, 'f') obs:o neme da variavel pode ser qua
 from deciamal import Decimal
 # Após isso já pode usar o comando(python)
 vcomprimento=Decimal(e aqui dentro voce bota ou o número ou o comando de input)
+# temporario
+https://www.canva.com/design/DAGpzYfQzJ8/PXK6Q_jIq8CAvaMkyvzg0g/edit?utm_content=DAGpzYfQzJ8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
