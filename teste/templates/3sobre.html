@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/formulas">Fórmulas</a>
-        <a href="/contato">Contato</a>
-    </div>
+    {% include '0sidebar.html' %}
 
     <div class="main-content" id="mainContent">
         <p>Esse é um projeto de engenharia e ainda está em desenvolvimento portanto ainda teram atualizações e mudanças</p>

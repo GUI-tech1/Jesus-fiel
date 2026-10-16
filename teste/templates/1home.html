@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=>
+    <title>Projeto engenharia</title>
+    <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
+</head>
+<body>
+    <!-- usa o conteudo de outro arquivo.html, quando tem o flask, quando nao tem se usa o <iframe>-->
+    {% include '0sidebar.html' %}
+    <div class="main-content" id="mainContent">
+        <h1>Bem-vindo ao Site</h1>
+        <p>Esse site foi criado com o intuito de ajudar a realizar alguns dos calculos que são muito usados na engenharia</p>
+    </div>
+</body>
+</html>

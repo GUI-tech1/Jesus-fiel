@@ -13,15 +13,13 @@
     
     
     --> 
-    <div class="sidebar" id="sidebar">
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/formulas" >Fórmulas</a>
-        <a href="/contato">Contato</a>
-    </div>
+    {% include '0sidebar.html' %}
     <div class="main-content" id="mainContent">
         <h1>FÓRMULAS</h1>
-        <input type="text" id="search" placeholder="Pesquisar...">
+    </div>
+    <div class="main-content" id="mainContent" method="POST" href="/search">
+        <input type="text" id="search-bar" placeholder="Pesquisar...">
+        <button type="submit" href="/search" id="search-button">Pesquisar</a>
     </div>
     <div class="formulas">
         <a href="/velocidademedia"> Velocidade média </a>
@@ -31,6 +29,8 @@
         <a href="/2leinewton">2° Lei de Newton</a>
         <a href="/mru">MRU</a>
         <a href="/areatriangulo"> Área triângulo </a>
+        <a href="/pearson"> Pearson </a>
+    </div>
 
         
 

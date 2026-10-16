@@ -1,3 +1,4 @@
+import webview 
 #Essas 2 linhas debaixo são obrigatórias para importar o Flask e o app funcionar 
 from flask import Flask
 app = Flask(__name__)
@@ -6,5 +7,6 @@ from rotas import *
 #Não sei o pq mas sem esse if o app não funciona direito
 #se botar o app.run(debug=true) pode editar o site com o codigo rodando
 if __name__ == "__main__":
-    app.run(debug=True)
-    
+    #codigo da bliblioteca webviel para não precisar abrir o site no navegador toda hora, só para desenvolvimento
+    webview.create_window("Calculadora de fórmulas", app)
+    webview.start()

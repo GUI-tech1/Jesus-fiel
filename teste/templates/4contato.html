@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
-        <a href="/">Home</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/formulas">Fórmulas</a>
-        <a href="/contato">Contato</a>
-    </div>
-
+    {% include '0sidebar.html' %}
     <div class="contato" id="mainContent">
         <h1>Email: <a></a></h1>
     </div>

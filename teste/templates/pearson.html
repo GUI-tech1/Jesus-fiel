@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área triângulo</title>
+    <link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
+</head>
+<body>
+    {% include '0sidebar.html' %}
+
+    <div class="main-content" id="mainContent">
+        <h1>Coeficiente de Correlação de Pearson</h1>
+        <a>insira os dados de X e Y em suas respectivas caixas e clique em salvar para adciona-los a memoria para poder fazer o calculo</a>
+    </div>
+ <!--
+    o <br> é para quebrar linha, ou seja ele vai quebrar a linha entre os inputs fazendo com que fique
+    um abaixo do outro
+ -->
+    <form class=calculo1 action="/calculo_pearson" method="post">
+        <label for="x1">X:</label>
+        <input type="number" name="X" step="any" required>
+        <br><br>
+        <label for="y1">Y:</label>
+        <input type="number" name="Y" step="any" required>
+        <br><br>
+        <p>{{Bliblioteca}}</p>
+        <button>Calcular</button>
+        <button type="submit" formaction="/salvar">Salvar</button>
+        <p>{{resultado}}</p>
+    </form>
+    <form class=calculo1 action="/limpar" method="post"> 
+        <button type="submit" formaction="/limpar">limpar</button>
+    </form> 
+
+</body>
+</html>
+

@@ -1,6 +1,10 @@
 # Jesus-fiel
 # comando para instalar o flask(terminal)
 pip install flask
+# bliblioteca do phyton 
+pip install pyinstaller
+pip install pywebview 
+pip install pyinstaller (so para trnasformar o arquivo em executavel)
 # comando para puxar o estilo da pagina do css (html)
 link rel="stylesheet" href="{{ url_for( 'static',filename='style.css')}}">
 # comando que resolve o erro da de aparecer o resuldado como notação cientifica(dependedo do tamanho do número é importante definir a variavel como decimal)(python)

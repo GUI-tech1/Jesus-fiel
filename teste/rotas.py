@@ -1,26 +1,43 @@
-from main import app
+from formulando import app
 from flask import render_template, request, redirect, url_for
 from decimal import Decimal
+from listas import *
 #quando na rota só tem o "/" é pq é a pagina inicial do site
 #para o render template funcionar, tem que ter o arquivo .html na pasta templates
 
+#salvar em lista para calculo de memoria
+@app.route("/salvar", methods=["POST"])
+def salvar():
+    x = request.form.get("X")
+    y = request.form.get("Y")
+    X = float(x)
+    Y = float(y)
+    teste01.append(X)
+    teste02.append(Y)
+    return render_template("pearson.html", Bliblioteca=(teste01, teste02))
+@app.route("/limpar", methods=["POST"])
+def limpar():
+    teste01.clear()
+    teste02.clear()
+    return render_template("pearson.html", Bliblioteca=(teste01, teste02))
 
 #paginas
 #abas
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("1home.html")
 @app.route("/formulas")
 def formulas():
-    return render_template("formulas.html")
+    return render_template("2formulas.html")
 @app.route("/sobre")
 def sobre():
-    return render_template("sobre.html")
+    return render_template("3sobre.html")
 @app.route("/contato")
 def contato():
-    return render_template("contato.html")
-
-
+    return render_template("4contato.html")
+@app.route("/pearson")
+def pearson():
+    return render_template("pearson.html")
 
 #formulas
 @app.route("/velocidademedia")
@@ -166,5 +183,47 @@ def cauculo_areatriangulo():
         return render_template("areatriangulo.html", areaT= "A área do triângulo é:" + str(area1))
     else:
         return render_template("areatriangulo.html", areaT= "Erro: Preencha os campos corretamente.")
+#Pearson
+@app.route("/calculo_pearson", methods=["POST"])
+def cauculo_pearson(teste01=teste01, teste02=teste02):
+    salvar()
+    if len(teste01) == 0 or len(teste01) == 1:
+        return render_template("pearson.html",Bliblioteca=(teste01,teste02), resultado="cheque os dados")
+    else:
+        SomaX=sum(teste01)
+        SomaY=sum(teste02)
+        r1 = []
+        r4= []
+        r8=[]
+        for i in range(len(teste01)):
+            r1.append(teste01[i] * teste02[i])
+        r2=sum(r1)
+        r3=(SomaX*SomaY)/len(teste01)
+        rcima=r2-r3
+        for i in range(len(teste01)):
+            r4.append(teste01[i]**2)
+        r5=sum(r4)
+        r6=SomaX**2/len(teste01)
+        r7=r5-r6
+        for i in range(len(teste02)):
+            r8.append(teste02[i]**2)
+        r9=sum(r8)
+        r10=SomaY**2/len(teste02)
+        r11=r9-r10
+        r12=r11*r7
+        rbaixo=r12**(1/2)
+        if rcima ==0 or rbaixo==0:
+            return render_template("pearson.html",Bliblioteca=(teste01,teste02), resultado="cheque os dados")
+        else:
+            Resultado=rcima/rbaixo
+            return render_template("pearson.html", resultado= "O resultado do coeficiente de correlação de Pearson é: " + str(f"{Resultado:.2%}" ),Bliblioteca=(teste01,teste02))
+
+
+
+
+
+
+ 
+    
 
 
